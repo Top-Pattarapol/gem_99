@@ -1,6 +1,8 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 function SendMoney() {
+  const navigate = useNavigate()
   const [amount, setAmount] = useState('')
   const [recipient, setRecipient] = useState('')
   const [note, setNote] = useState('')
@@ -20,6 +22,15 @@ function SendMoney() {
   return (
     <div className="min-h-screen pt-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-2xl mx-auto py-8">
+        {/* Back to Home Button */}
+        <button
+          onClick={() => navigate('/')}
+          className="mb-6 flex items-center space-x-2 px-4 py-2 bg-white/80 border border-gray-200 rounded-xl text-gray-700 hover:text-gray-900 hover:bg-white hover:shadow-md transition-all"
+        >
+          <span className="text-xl">←</span>
+          <span className="font-semibold">Back to Dashboard</span>
+        </button>
+        
         <div className="mb-8 text-center">
           <h1 className="text-4xl font-bold gradient-text mb-3">Send Money</h1>
           <p className="text-gray-600 text-lg">Transfer funds instantly to anyone</p>

@@ -1,6 +1,8 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 function Transactions() {
+  const navigate = useNavigate()
   const [filter, setFilter] = useState('all')
   const [transactions] = useState([
     { id: 1, type: 'received', amount: 150.00, from: 'John Doe', date: '2025-06-19', status: 'completed', category: 'personal' },
@@ -27,6 +29,15 @@ function Transactions() {
   return (
     <div className="min-h-screen pt-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto py-8">
+        {/* Back to Home Button */}
+        <button
+          onClick={() => navigate('/')}
+          className="mb-6 flex items-center space-x-2 px-4 py-2 bg-white/80 border border-gray-200 rounded-xl text-gray-700 hover:text-gray-900 hover:bg-white hover:shadow-md transition-all"
+        >
+          <span className="text-xl">←</span>
+          <span className="font-semibold">Back to Dashboard</span>
+        </button>
+        
         <div className="mb-8">
           <h1 className="text-4xl font-bold gradient-text mb-3">Transaction History</h1>
           <p className="text-gray-600 text-lg">View and analyze all your payment activities</p>
