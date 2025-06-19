@@ -12,11 +12,11 @@ function Dashboard() {
   ])
 
   const handleAddMoney = () => {
-    alert('Add Money feature - Connect your bank account or credit card to add funds')
+    navigate('/add-money')
   }
 
   const handleLinkCard = () => {
-    alert('Link Card feature - Add a new payment method to your account')
+    navigate('/link-card')
   }
 
   const handleViewAllTransactions = () => {
