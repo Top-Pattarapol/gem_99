@@ -1,16 +1,105 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
+/* Global Styles */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 :root {
+  /* 
+    Brand Colors 
+    Extracted from the website UI. The primary brand color is a vibrant green.
+  */
+  --color-web-green-50: #e6f6ee;
+  --color-web-green-100: #bcf0d8;
+  --color-web-green-200: #8ce9c1;
+  --color-web-green-300: #5ce3aa;
+  --color-web-green-400: #2bdb93;
+  --color-web-green-500: #00A950;  /* Main Green (Buttons, Active states) */
+  --color-web-green-600: #009947;  /* Darker Green (Header) */
+  --color-web-green-700: #00803c;
+  --color-web-green-800: #006630;
+  --color-web-green-900: #004d24;
+  
+  /* 
+    Functional Colors 
+    Standard colors for UI states like success, error, etc.
+  */
+  --color-success: var(--color-web-green-500); /* Use brand color for success */
+  --color-warning: #F59E0B;
+  --color-error: #EF4444;
+  --color-info: #3B82F6;
+  
+  /* 
+    Neutral & Grayscale Colors 
+    Used for text, backgrounds, and borders.
+  */
+  --color-white: #FFFFFF;
+  --color-neutral-50: #F5F7F8;    /* Page Background */
+  --color-neutral-100: #F3F4F6;
+  --color-neutral-200: #E5E7EB;   /* Borders and Dividers */
+  --color-neutral-300: #D1D5DB;
+  --color-neutral-400: #9CA3AF;
+  --color-neutral-500: #6B7280;   /* Secondary Text */
+  --color-neutral-600: #4B5563;
+  --color-neutral-700: #374151;   /* Primary Body Text */
+  --color-neutral-800: #333D47;   /* Footer Background */
+  --color-neutral-900: #111827;   /* Darkest Text */
+
+  /* 
+    Spacing & Sizing
+    A consistent spacing scale for margins, paddings, and layout.
+  */
+  --spacing-1: 0.25rem;  /* 4px */
+  --spacing-2: 0.5rem;   /* 8px */
+  --spacing-3: 0.75rem;  /* 12px */
+  --spacing-4: 1rem;     /* 16px */
+  --spacing-5: 1.25rem;  /* 20px */
+  --spacing-6: 1.5rem;   /* 24px */
+  --spacing-8: 2rem;     /* 32px */
+  --spacing-10: 2.5rem;  /* 40px */
+  --spacing-12: 3rem;    /* 48px */
+  --spacing-16: 4rem;    /* 64px */
+  --spacing-24: 6rem;    /* 96px */
+
+  /* 
+    Typography 
+    A scale for font sizes to maintain consistency.
+  */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+  
+  /* 
+    Border Radius
+    Used for rounding corners of buttons, cards, and other elements.
+  */
+  --radius-sm: 0.25rem;    /* 4px */
+  --radius-md: 0.5rem;     /* 8px, used for buttons and cards */
+  --radius-lg: 0.75rem;    /* 12px, for larger cards */
+  --radius-xl: 1rem;       /* 16px */
+  --radius-full: 9999px;   /* For circular elements */
+  
+  /* 
+    Box Shadow
+    To create depth and elevation for elements like cards.
+  */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.07), 0 1px 2px -1px rgb(0 0 0 / 0.07); /* A subtle shadow for cards */
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+
+  /* Global font and color settings */
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   line-height: 1.6;
   font-weight: 400;
   color-scheme: light;
-  color: #1a1a1a;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: var(--color-neutral-700);
+  background-color: var(--color-neutral-50);
   
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -25,16 +114,39 @@
 body {
   margin: 0;
   min-height: 100vh;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  background-color: var(--color-neutral-50);
+  color: var(--color-neutral-700);
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-neutral-900);
+  font-weight: 600;
+  line-height: 1.2;
 }
+
+h1 { font-size: var(--text-4xl); }
+h2 { font-size: var(--text-3xl); }
+h3 { font-size: var(--text-2xl); }
+h4 { font-size: var(--text-xl); }
+h5 { font-size: var(--text-lg); }
+h6 { font-size: var(--text-base); }
+
+p {
+  color: var(--color-neutral-600);
+  line-height: 1.6;
+}
+
+/* Links */
+a {
+  color: var(--color-web-green-500);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease-in-out;
+}
+
 a:hover {
-  color: #535bf2;
+  color: var(--color-web-green-600);
 }
 
 /* Custom scrollbar */
@@ -43,36 +155,20 @@ a:hover {
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 10px;
+  background: var(--color-neutral-100);
+  border-radius: var(--radius-full);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  border-radius: 10px;
+  background: var(--color-web-green-400);
+  border-radius: var(--radius-full);
 }
 
-/* Glass morphism effect */
-.glass {
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-web-green-500);
 }
 
-/* Gradient text */
-.gradient-text {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-/* Reset default button styles and create modern button base */
+/* Button base styles */
 button {
   border: none;
   background: none;
@@ -83,45 +179,82 @@ button {
   padding: 0;
   margin: 0;
   outline: none;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.2s ease-in-out;
 }
 
 button:focus-visible {
-  outline: 2px solid #3b82f6;
+  outline: 2px solid var(--color-info);
   outline-offset: 2px;
 }
 
-/* Button animations */
-.btn-hover {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  transform: translateY(0);
+/* Utility classes for the design system */
+.btn-primary {
+  background-color: var(--color-web-green-500);
+  color: var(--color-white);
+  padding: var(--spacing-3) var(--spacing-6);
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  box-shadow: var(--shadow);
+  transition: all 0.2s ease-in-out;
 }
 
-.btn-hover:hover {
+.btn-primary:hover {
+  background-color: var(--color-web-green-600);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background-color: var(--color-white);
+  color: var(--color-web-green-600);
+  border: 1px solid var(--color-neutral-200);
+  padding: var(--spacing-3) var(--spacing-6);
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-secondary:hover {
+  border-color: var(--color-web-green-300);
+  box-shadow: var(--shadow);
+  transform: translateY(-1px);
+}
+
+.card {
+  background-color: var(--color-white);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-6);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--color-neutral-200);
+  transition: all 0.2s ease-in-out;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
   transform: translateY(-2px);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
-.btn-hover:active {
-  transform: translateY(0);
+.text-success { color: var(--color-success); }
+.text-warning { color: var(--color-warning); }
+.text-error { color: var(--color-error); }
+.text-info { color: var(--color-info); }
+
+.bg-success { background-color: var(--color-success); }
+.bg-warning { background-color: var(--color-warning); }
+.bg-error { background-color: var(--color-error); }
+.bg-info { background-color: var(--color-info); }
+
+/* Status indicator styles */
+.status-indicator {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  margin-right: var(--spacing-2);
 }
 
-/* Card animations */
-.card-hover {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.card-hover:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-}
+.status-success { background-color: var(--color-success); }
+.status-warning { background-color: var(--color-warning); }
+.status-error { background-color: var(--color-error); }
+.status-info { background-color: var(--color-info); }
