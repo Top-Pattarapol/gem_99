@@ -1,9 +1,10 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Navigation from './components/Navigation'
-import Home from './pages/Home'
-import About from './pages/About'
-import Contact from './pages/Contact'
-import Page1 from './pages/Page1'
+import Dashboard from './pages/Dashboard'
+import SendMoney from './pages/SendMoney'
+import RequestMoney from './pages/RequestMoney'
+import Transactions from './pages/Transactions'
+import Profile from './pages/Profile'
 
 function App() {
   return (
@@ -12,10 +13,11 @@ function App() {
         <Navigation />
         <div className="pt-16"> {/* Add padding-top to account for fixed navigation */}
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/page1" element={<Page1 />} />
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/send" element={<SendMoney />} />
+            <Route path="/request" element={<RequestMoney />} />
+            <Route path="/transactions" element={<Transactions />} />
+            <Route path="/profile" element={<Profile />} />
           </Routes>
         </div>
       </div>
